@@ -1,38 +1,34 @@
-# MMR: MRI Artifact Suppression using Diffusion Models
+MMR: MRI Artifact Suppression using Diffusion Models
 
-## 📌 Overview
-This project implements a **diffusion-based Transformer model** for **MRI artifact suppression** and **3D CNN-based segmentation**. The framework includes:  
-- **Dataset preparation** (Preprocessing, Synthetic Artifact Generation, and Clean MRI Pairing)  
-- **Diffusion Model Training** for artifact suppression  
-- **3D CNN Training** for brain tumor segmentation  
-- **Evaluation Metrics** to measure performance  
-
+Overview
+This project implements a diffusion-based Transformer model for MRI artifact suppression and 3D CNN-based segmentation. The framework includes:  
+Dataset preparation (Preprocessing, Synthetic Artifact Generation, and Clean MRI Pairing)  
+Diffusion Model Training for artifact suppression  
+3D CNN Training for brain tumor segmentation  
+Evaluation Metrics to measure performance  
 ---
+Dataset Preparation
+This project follows a structured data preparation pipeline:
+(a)Preprocessing
+Resampling and Normalization of MRI scans  
+Standardization of input size to 128×128×128  
+Saving in `.h5` format for efficient storage  
 
-## 📂 **Dataset Preparation**
-This project follows a structured **data preparation pipeline**:
-### (a) **Preprocessing**
-- **Resampling and Normalization** of MRI scans  
-- **Standardization of input size** to **128×128×128**  
-- **Saving in `.h5` format** for efficient storage  
+(b) Synthetic Artifact Generation
+Introduces motion, noise, ghosting, and k-space corruption**  
+Saves paired synthetic+clean MRI images for training  
 
-### (b) **Synthetic Artifact Generation**
-- Introduces **motion, noise, ghosting, and k-space corruption**  
-- Saves paired **synthetic+clean MRI** images for training  
-
-### (c) **Synthetic + Clean MRI Image Pairing**
-- Creates paired data for supervised training of the **diffusion model**  
-- Stored as **HDF5 (`.h5`) format** for efficient access  
-
+(c) Synthetic + Clean MRI Image Pairing
+Creates paired data for supervised training of the diffusion model 
+Stored as HDF5 (`.h5`) format for efficient access  
 ---
+Diffuse Model Training
+Uses a Transformer-based Vision Model for artifact suppression  
+Trained using MSE + SSIM loss  
+Uses a linear beta scheduling strategy over 1000 timesteps 
+Implemented in PyTorch 
 
-## 🎯 **Diffuse Model Training**
-- Uses a **Transformer-based Vision Model** for artifact suppression  
-- Trained using **MSE + SSIM loss**  
-- Uses a **linear beta scheduling strategy** over **1000 timesteps**  
-- Implemented in **PyTorch**  
-
-**🔹 Training Command:**
+Training Command:
 ```bash
 python scripts/train_diffusion.py --data_path "path/to/dataset" --epochs 400 --batch_size 4
 
