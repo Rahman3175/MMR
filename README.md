@@ -34,7 +34,7 @@ python scripts/train_diffusion.py --data_path "path/to/dataset" --epochs 400 --b
 
 3D CNN Model Training
 Training Command:
-python scripts/train_cnn.py --data_path "path/to/preprocessed_data" --epochs 300 --batch_size 2
+python scripts/train_cnn.py --data_path "path/to/preprocessed_data" --epochs 400 --batch_size 2
 Evaluation Metrics
 python scripts/evaluate.py --model_path "path/to/model.pth" --test_data "path/to/test_data"
 Installation
@@ -45,7 +45,7 @@ Usage
 Training the Diffusion Model
 python scripts/train_diffusion.py --data_path "path/to/dataset" --epochs 400 --batch_size 4
 Training the 3D CNN Model
-python scripts/train_cnn.py --data_path "path/to/preprocessed_data" --epochs 300 --batch_size 2
+python scripts/train_cnn.py --data_path "path/to/preprocessed_data" --epochs 400 --batch_size 2
 Running Inference
 python scripts/infer.py --input "path/to/input_image.h5" --output "path/to/output_image.h5"
 Running Evaluation
